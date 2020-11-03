@@ -1,0 +1,209 @@
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{relsize}
+\usepackage{hyperref}
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+% for proper bold math, including bold greek letters; typesets in math-mode
+% and not in \mathrm font
+\usepackage{bm}
+
+% %%%%%%%%%%%%%  VECTORS %%%%%%%%%%%%%%%%%%%
+\newcommand{\bmt}[1]{\bm{#1}^T} % transpose of a vector
+% INNER PRODUCT <x,y>
+\newcommand{\ip}[2]{\langle {#1},\, {#2} \rangle}
+
+% \va, \vb etc. type bold letters; notice exception at \vech -- coz. \vh is a
+% predefined thing in latex; 
+% additional commands include \vah -- read as vector a hat, 
+% or \ah -- a hat and so on
+\newcommand{\va}{\bm{a}}       \newcommand{\vah}{\hat{\bm{a}}}        \newcommand{\ah}{\hat{a}}
+\newcommand{\vb}{\bm{b}}       \newcommand{\vbh}{\hat{\bm{b}}}        \newcommand{\bh}{\hat{b}}
+\newcommand{\vc}{\bm{c}}       \newcommand{\vch}{\hat{\bm{c}}}        \newcommand{\ch}{\hat{c}}
+\newcommand{\vd}{\bm{d}}       \newcommand{\vdh}{\hat{\bm{d}}}        \newcommand{\dhat}{\hat{d}}
+\newcommand{\ve}{\bm{e}}       \newcommand{\veh}{\hat{\bm{e}}}        \newcommand{\eh}{\hat{e}}
+\newcommand{\vf}{\bm{f}}       \newcommand{\vfh}{\hat{\bm{f}}}        \newcommand{\fh}{\hat{f}}
+\newcommand{\vg}{\bm{g}}       \newcommand{\vgh}{\hat{\bm{g}}}        \newcommand{\gh}{\hat{g}}
+\newcommand{\vech}{\bm{h}}     \newcommand{\vhh}{\hat{\bm{h}}}        \newcommand{\hh}{\hat{h}}
+\newcommand{\vi}{\bm{i}}       \newcommand{\vih}{\hat{\bm{i}}}        \newcommand{\ih}{\hat{i}}
+\newcommand{\vj}{\bm{j}}       \newcommand{\vjh}{\hat{\bm{j}}}        \newcommand{\jh}{\hat{j}}
+\newcommand{\vk}{\bm{k}}       \newcommand{\vkh}{\hat{\bm{k}}}        \newcommand{\kh}{\hat{k}}
+\newcommand{\vl}{\bm{l}}       \newcommand{\vlh}{\hat{\bm{l}}}        \newcommand{\lh}{\hat{l}}
+\newcommand{\vm}{\bm{m}}       \newcommand{\vmh}{\hat{\bm{m}}}        \newcommand{\mh}{\hat{m}}
+\newcommand{\vn}{\bm{n}}       \newcommand{\vnh}{\hat{\bm{n}}}        \newcommand{\nh}{\hat{n}}
+\newcommand{\vo}{\bm{o}}       \newcommand{\voh}{\hat{\bm{o}}}        \newcommand{\oh}{\hat{o}}
+\newcommand{\vp}{\bm{p}}       \newcommand{\vph}{\hat{\bm{p}}}        \newcommand{\ph}{\hat{p}}
+\newcommand{\vq}{\bm{q}}       \newcommand{\vqh}{\hat{\bm{q}}}        \newcommand{\qh}{\hat{q}}
+\newcommand{\vr}{\bm{r}}       \newcommand{\vrh}{\hat{\bm{r}}}        \newcommand{\rh}{\hat{r}}
+\newcommand{\vs}{\bm{s}}       \newcommand{\vsh}{\hat{\bm{s}}}        \newcommand{\sh}{\hat{s}}
+\newcommand{\vt}{\bm{t}}       \newcommand{\vth}{\hat{\bm{t}}}        \newcommand{\that}{\hat{t}}
+\newcommand{\vu}{\bm{u}}       \newcommand{\vuh}{\hat{\bm{u}}}        \newcommand{\uh}{\hat{u}}
+\newcommand{\vv}{\bm{v}}       \newcommand{\vvh}{\hat{\bm{v}}}        \newcommand{\vh}{\hat{v}}
+\newcommand{\vw}{\bm{w}}       \newcommand{\vwh}{\hat{\bm{w}}}        \newcommand{\wh}{\hat{w}}
+\newcommand{\vx}{\bm{x}}       \newcommand{\vxh}{\hat{\bm{x}}}        \newcommand{\xh}{\hat{x}}
+\newcommand{\vy}{\bm{y}}       \newcommand{\vyh}{\hat{\bm{y}}}        \newcommand{\yh}{\hat{y}}
+\newcommand{\vz}{\bm{z}}       \newcommand{\vzh}{\hat{\bm{z}}}        \newcommand{\zh}{\hat{z}}
+\newcommand{\vY}{\bm{Y}}       \newcommand{\vzero}{\bm{0}}            \newcommand{\vone}{\bm{1}}
+\newcommand{\vA}{\bm{A}}        \newcommand{\vX}{\bm{X}}		\newcommand{\vU}{\bm{U}}
+\newcommand{\vV}{\bm{V}}	      \newcommand{\vW}{\bm{W}}
+
+% %%%%%%%%%%%%%%%%%%%% BOLD GREEK %%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Same convention as for ordinary roman letters above
+\newcommand{\valpha}  {\bm{\alpha}}      \newcommand{\valphah}  {\hat{\bm{\alpha}}}   
+\newcommand{\vbeta}   {\bm{\beta}}       \newcommand{\vbetah}   {\hat{\bm{\beta}}}    
+\newcommand{\vdelta}  {\bm{\delta}}      \newcommand{\vdeltah}  {\hat{\bm{\delta}}}   
+\newcommand{\vepsilon}{\bm{\epsilon}}    \newcommand{\vepsilonh}{\hat{\bm{\epsilon}}} 
+\newcommand{\vphi}    {\bm{\phi}}        \newcommand{\vphih}    {\hat{\bm{\phi}}}     
+\newcommand{\vgamma}  {\bm{\gamma}}      \newcommand{\vgammah}  {\hat{\bm{\gamma}}}   
+\newcommand{\veta}    {\bm{\eta}}        \newcommand{\vetah}    {\hat{\bm{\eta}}}     
+\newcommand{\vtheta}  {\bm{\theta}}      \newcommand{\vthetah}  {\hat{\bm{\theta}}}   
+\newcommand{\vkappa}  {\bm{\kappa}}      \newcommand{\vkappah}  {\hat{\bm{\kappa}}}   
+\newcommand{\vlambda} {\bm{\lambda}}     \newcommand{\vlambdah} {\hat{\bm{\lambda}}}  
+\newcommand{\vmu}     {\bm{\mu}}         \newcommand{\vmuh}     {\hat{\bm{\mu}}}      
+\newcommand{\vnu}     {\bm{\nu}}         \newcommand{\vnuh}     {\hat{\bm{\nu}}}      
+\newcommand{\vpi}     {\bm{\pi}}         \newcommand{\vpih}     {\hat{\bm{\pi}}}      
+\newcommand{\vchi}    {\bm{\chi}}        \newcommand{\vchih}    {\hat{\bm{\chi}}}     
+\newcommand{\vrho}    {\bm{\rho}}        \newcommand{\vrhoh}    {\hat{\bm{\rho}}}     
+\newcommand{\vsigma}  {\bm{\sigma}}      \newcommand{\vsigmah}  {\hat{\bm{\sigma}}}   
+\newcommand{\vtau}    {\bm{\tau}}        \newcommand{\vtauh}    {\hat{\bm{\tau}}}     
+\newcommand{\vupsilon}{\bm{\upsilon}}    \newcommand{\vupsilonh}{\hat{\bm{\upsilon}}} 
+\newcommand{\vomega}  {\bm{\omega}}      \newcommand{\vomegah}  {\hat{\bm{\omega}}}   
+\newcommand{\vxi}     {\bm{\xi}}         \newcommand{\vxih}     {\hat{\bm{\xi}}}      
+\newcommand{\vpsi}    {\bm{\psi}}        \newcommand{\vpsih}    {\hat{\bm{\psi}}}     
+\newcommand{\vzeta}   {\bm{\zeta}}       \newcommand{\vzetah}   {\hat{\bm{\zeta}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% CALLIGRAPHIC LETTERS %%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ac}{\mathcal{a}}    \newcommand{\Ac}{\mathcal{A}}  
+\newcommand{\bc}{\mathcal{b}}    \newcommand{\Bc}{\mathcal{B}}  
+\newcommand{\cc}{\mathcal{c}}    \newcommand{\Cc}{\mathcal{C}}  
+\newcommand{\dc}{\mathcal{d}}    \newcommand{\Dc}{\mathcal{D}}  
+\newcommand{\ec}{\mathcal{e}}    \newcommand{\Ec}{\mathcal{E}}  
+\newcommand{\fc}{\mathcal{f}}    \newcommand{\Fc}{\mathcal{F}}  
+\newcommand{\gc}{\mathcal{g}}    \newcommand{\Gc}{\mathcal{G}}  
+\newcommand{\hc}{\mathcal{h}}    \newcommand{\Hc}{\mathcal{H}}  
+\newcommand{\ic}{\mathcal{i}}    \newcommand{\Ic}{\mathcal{I}}  
+\newcommand{\jc}{\mathcal{j}}    \newcommand{\Jc}{\mathcal{J}}  
+\newcommand{\kc}{\mathcal{k}}    \newcommand{\Kc}{\mathcal{K}}  
+\newcommand{\lc}{\mathcal{l}}    \newcommand{\Lc}{\mathcal{L}}  
+\newcommand{\mcal}{\mathcal{m}}  \newcommand{\Mc}{\mathcal{M}}  
+\newcommand{\nc}{\mathcal{n}}    \newcommand{\Nc}{\mathcal{N}}  
+\newcommand{\oc}{\mathcal{o}}    \newcommand{\Oc}{\mathcal{O}}  
+\newcommand{\pc}{\mathcal{p}}    \newcommand{\Pc}{\mathcal{P}}  
+\newcommand{\qc}{\mathcal{q}}    \newcommand{\Qc}{\mathcal{Q}}  
+\newcommand{\rc}{\mathcal{r}}    \newcommand{\Rc}{\mathcal{R}}  
+\newcommand{\scal}{\mathcal{s}}  \newcommand{\Sc}{\mathcal{S}}  
+\newcommand{\tc}{\mathcal{t}}    \newcommand{\Tc}{\mathcal{T}}  
+\newcommand{\uc}{\mathcal{u}}    \newcommand{\Uc}{\mathcal{U}}  
+\newcommand{\vcal}{\mathcal{v}}  \newcommand{\Vc}{\mathcal{V}}  
+\newcommand{\wc}{\mathcal{w}}    \newcommand{\Wc}{\mathcal{W}}  
+\newcommand{\xc}{\mathcal{x}}    \newcommand{\Xc}{\mathcal{X}}  
+\newcommand{\yc}{\mathcal{y}}    \newcommand{\Yc}{\mathcal{Y}}  
+\newcommand{\zc}{\mathcal{z}}    \newcommand{\Zc}{\mathcal{Z}}  
+
+\newcommand{\cut}{}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\deriv}[2]{\frac{\partial {#1}}{\partial {#2}} }
+
+\title{COMPSCI 590N: Assignment 1}
+\date{Due: September 15, 2017 at 11:59pm}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\maketitle
+
+Please write all code for the following problems in the provided code file, \verb|assignment1.py|, using the marked areas. Included with the assignment is a script for testing your solution called \verb|assignment1_tests.py|. This script will test the output from your code against a number of test cases and will indicate if there are errors. Once you have written your code in \verb|assignment1.py|, you can run these tests by executing:
+
+\begin{verbatim}
+	python assignment1_tests.py
+\end{verbatim}
+
+\textbf{Be sure that you can run} \verb|assignment1_tests.py| \textbf{in this way before submitting as this is how we will test your code for grading!} The provided test cases are meant to help you debug your code, but you should not assume that they are exhaustive. If a problem asks you define a function or class, \textbf{you should use exactly the name specified} in the problem for this function or class. Your modified version of \verb|assignment1.py| should be submitted to Moodle by the due date specified above. 
+
+\section*{Problem 1 (25 points)}
+Write the body for the function \verb|evens_only| in \verb|assignment1.py|. \verb|evens_only| takes a list of numbers called \verb|input_list| and returns a list of integers containing only the even, integer valued numbers in \verb|input_list|. For example, the call \verb|evens_only([1.0,2.0,2.5,3.0,4])| should return the list \verb|[2,4]|. The numbers in the returned list should be in the same order as in \verb|input_list|. You may assume that only lists of numbers will be passed as \verb|input_list|, but you should make no assumptions about the type of the numbers (that is, they may be integers or floats). The returned value should be a list type and should contain integer types.
+
+\section*{Problem 2 (25 points)}
+Write the body for the function \verb|piecewise| that takes a single numeric input called \verb|x| and implements the following piecewise defined function:
+
+\begin{align*}
+	f(x) = \left\{
+	     \begin{array}{ll}
+	       -1 & : x < 0\\
+	       3x^2 & : 0 \leq x < 2\\
+		   -x & : 2 \leq x
+	     \end{array}
+	   \right.
+\end{align*}
+
+You may assume the the input to \verb|piecewise| will be a number, but the input may be either an integer or float. The output should have type float.
+
+\section*{Problem 3 (50 points)}
+
+Write the body for the function \verb|character_count| which takes as input a file name called \verb|file_path|, reads in the text file at \verb|file_path|, counts the number of times each alphabetic letter (a through z) is used in the input file, and returns a dictionary that maps each letter to the number of times it appears. Only letters used in the file should appear in the dictionary, punctuation and white space should be ignored, and letter case should be ignored. For example, if the file \verb|test1.txt| contains:
+
+\begin{verbatim}
+Test 
+string!
+\end{verbatim}
+
+then \verb|character_count("test1.txt")| should return the dictionary: 
+
+\begin{verbatim}
+{'e': 1, 'g': 1, 'i': 1, 'n': 1, 's': 2, 'r': 1, 't': 3}
+\end{verbatim}
+
+You may assume that \verb|file_path| is a string and points an existing text file. The keys of the dictionary should have type \verb|string| and the values should have type \verb|int|. Three test files are included with the assignment for testing your code. Two useful resources for this problem are the built-in string methods (\url{https://docs.python.org/2/library/stdtypes.html#string-methods}) and the string module (\url{https://docs.python.org/2/library/string.html}).
+
+\end{document}

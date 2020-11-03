@@ -1,0 +1,191 @@
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{relsize}
+\usepackage{hyperref}
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+% for proper bold math, including bold greek letters; typesets in math-mode
+% and not in \mathrm font
+\usepackage{bm}
+
+% %%%%%%%%%%%%%  VECTORS %%%%%%%%%%%%%%%%%%%
+\newcommand{\bmt}[1]{\bm{#1}^T} % transpose of a vector
+% INNER PRODUCT <x,y>
+\newcommand{\ip}[2]{\langle {#1},\, {#2} \rangle}
+
+% \va, \vb etc. type bold letters; notice exception at \vech -- coz. \vh is a
+% predefined thing in latex; 
+% additional commands include \vah -- read as vector a hat, 
+% or \ah -- a hat and so on
+\newcommand{\va}{\bm{a}}       \newcommand{\vah}{\hat{\bm{a}}}        \newcommand{\ah}{\hat{a}}
+\newcommand{\vb}{\bm{b}}       \newcommand{\vbh}{\hat{\bm{b}}}        \newcommand{\bh}{\hat{b}}
+\newcommand{\vc}{\bm{c}}       \newcommand{\vch}{\hat{\bm{c}}}        \newcommand{\ch}{\hat{c}}
+\newcommand{\vd}{\bm{d}}       \newcommand{\vdh}{\hat{\bm{d}}}        \newcommand{\dhat}{\hat{d}}
+\newcommand{\ve}{\bm{e}}       \newcommand{\veh}{\hat{\bm{e}}}        \newcommand{\eh}{\hat{e}}
+\newcommand{\vf}{\bm{f}}       \newcommand{\vfh}{\hat{\bm{f}}}        \newcommand{\fh}{\hat{f}}
+\newcommand{\vg}{\bm{g}}       \newcommand{\vgh}{\hat{\bm{g}}}        \newcommand{\gh}{\hat{g}}
+\newcommand{\vech}{\bm{h}}     \newcommand{\vhh}{\hat{\bm{h}}}        \newcommand{\hh}{\hat{h}}
+\newcommand{\vi}{\bm{i}}       \newcommand{\vih}{\hat{\bm{i}}}        \newcommand{\ih}{\hat{i}}
+\newcommand{\vj}{\bm{j}}       \newcommand{\vjh}{\hat{\bm{j}}}        \newcommand{\jh}{\hat{j}}
+\newcommand{\vk}{\bm{k}}       \newcommand{\vkh}{\hat{\bm{k}}}        \newcommand{\kh}{\hat{k}}
+\newcommand{\vl}{\bm{l}}       \newcommand{\vlh}{\hat{\bm{l}}}        \newcommand{\lh}{\hat{l}}
+\newcommand{\vm}{\bm{m}}       \newcommand{\vmh}{\hat{\bm{m}}}        \newcommand{\mh}{\hat{m}}
+\newcommand{\vn}{\bm{n}}       \newcommand{\vnh}{\hat{\bm{n}}}        \newcommand{\nh}{\hat{n}}
+\newcommand{\vo}{\bm{o}}       \newcommand{\voh}{\hat{\bm{o}}}        \newcommand{\oh}{\hat{o}}
+\newcommand{\vp}{\bm{p}}       \newcommand{\vph}{\hat{\bm{p}}}        \newcommand{\ph}{\hat{p}}
+\newcommand{\vq}{\bm{q}}       \newcommand{\vqh}{\hat{\bm{q}}}        \newcommand{\qh}{\hat{q}}
+\newcommand{\vr}{\bm{r}}       \newcommand{\vrh}{\hat{\bm{r}}}        \newcommand{\rh}{\hat{r}}
+\newcommand{\vs}{\bm{s}}       \newcommand{\vsh}{\hat{\bm{s}}}        \newcommand{\sh}{\hat{s}}
+\newcommand{\vt}{\bm{t}}       \newcommand{\vth}{\hat{\bm{t}}}        \newcommand{\that}{\hat{t}}
+\newcommand{\vu}{\bm{u}}       \newcommand{\vuh}{\hat{\bm{u}}}        \newcommand{\uh}{\hat{u}}
+\newcommand{\vv}{\bm{v}}       \newcommand{\vvh}{\hat{\bm{v}}}        \newcommand{\vh}{\hat{v}}
+\newcommand{\vw}{\bm{w}}       \newcommand{\vwh}{\hat{\bm{w}}}        \newcommand{\wh}{\hat{w}}
+\newcommand{\vx}{\bm{x}}       \newcommand{\vxh}{\hat{\bm{x}}}        \newcommand{\xh}{\hat{x}}
+\newcommand{\vy}{\bm{y}}       \newcommand{\vyh}{\hat{\bm{y}}}        \newcommand{\yh}{\hat{y}}
+\newcommand{\vz}{\bm{z}}       \newcommand{\vzh}{\hat{\bm{z}}}        \newcommand{\zh}{\hat{z}}
+\newcommand{\vY}{\bm{Y}}       \newcommand{\vzero}{\bm{0}}            \newcommand{\vone}{\bm{1}}
+\newcommand{\vA}{\bm{A}}        \newcommand{\vX}{\bm{X}}		\newcommand{\vU}{\bm{U}}
+\newcommand{\vV}{\bm{V}}	      \newcommand{\vW}{\bm{W}}
+
+% %%%%%%%%%%%%%%%%%%%% BOLD GREEK %%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Same convention as for ordinary roman letters above
+\newcommand{\valpha}  {\bm{\alpha}}      \newcommand{\valphah}  {\hat{\bm{\alpha}}}   
+\newcommand{\vbeta}   {\bm{\beta}}       \newcommand{\vbetah}   {\hat{\bm{\beta}}}    
+\newcommand{\vdelta}  {\bm{\delta}}      \newcommand{\vdeltah}  {\hat{\bm{\delta}}}   
+\newcommand{\vepsilon}{\bm{\epsilon}}    \newcommand{\vepsilonh}{\hat{\bm{\epsilon}}} 
+\newcommand{\vphi}    {\bm{\phi}}        \newcommand{\vphih}    {\hat{\bm{\phi}}}     
+\newcommand{\vgamma}  {\bm{\gamma}}      \newcommand{\vgammah}  {\hat{\bm{\gamma}}}   
+\newcommand{\veta}    {\bm{\eta}}        \newcommand{\vetah}    {\hat{\bm{\eta}}}     
+\newcommand{\vtheta}  {\bm{\theta}}      \newcommand{\vthetah}  {\hat{\bm{\theta}}}   
+\newcommand{\vkappa}  {\bm{\kappa}}      \newcommand{\vkappah}  {\hat{\bm{\kappa}}}   
+\newcommand{\vlambda} {\bm{\lambda}}     \newcommand{\vlambdah} {\hat{\bm{\lambda}}}  
+\newcommand{\vmu}     {\bm{\mu}}         \newcommand{\vmuh}     {\hat{\bm{\mu}}}      
+\newcommand{\vnu}     {\bm{\nu}}         \newcommand{\vnuh}     {\hat{\bm{\nu}}}      
+\newcommand{\vpi}     {\bm{\pi}}         \newcommand{\vpih}     {\hat{\bm{\pi}}}      
+\newcommand{\vchi}    {\bm{\chi}}        \newcommand{\vchih}    {\hat{\bm{\chi}}}     
+\newcommand{\vrho}    {\bm{\rho}}        \newcommand{\vrhoh}    {\hat{\bm{\rho}}}     
+\newcommand{\vsigma}  {\bm{\sigma}}      \newcommand{\vsigmah}  {\hat{\bm{\sigma}}}   
+\newcommand{\vtau}    {\bm{\tau}}        \newcommand{\vtauh}    {\hat{\bm{\tau}}}     
+\newcommand{\vupsilon}{\bm{\upsilon}}    \newcommand{\vupsilonh}{\hat{\bm{\upsilon}}} 
+\newcommand{\vomega}  {\bm{\omega}}      \newcommand{\vomegah}  {\hat{\bm{\omega}}}   
+\newcommand{\vxi}     {\bm{\xi}}         \newcommand{\vxih}     {\hat{\bm{\xi}}}      
+\newcommand{\vpsi}    {\bm{\psi}}        \newcommand{\vpsih}    {\hat{\bm{\psi}}}     
+\newcommand{\vzeta}   {\bm{\zeta}}       \newcommand{\vzetah}   {\hat{\bm{\zeta}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% CALLIGRAPHIC LETTERS %%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ac}{\mathcal{a}}    \newcommand{\Ac}{\mathcal{A}}  
+\newcommand{\bc}{\mathcal{b}}    \newcommand{\Bc}{\mathcal{B}}  
+\newcommand{\cc}{\mathcal{c}}    \newcommand{\Cc}{\mathcal{C}}  
+\newcommand{\dc}{\mathcal{d}}    \newcommand{\Dc}{\mathcal{D}}  
+\newcommand{\ec}{\mathcal{e}}    \newcommand{\Ec}{\mathcal{E}}  
+\newcommand{\fc}{\mathcal{f}}    \newcommand{\Fc}{\mathcal{F}}  
+\newcommand{\gc}{\mathcal{g}}    \newcommand{\Gc}{\mathcal{G}}  
+\newcommand{\hc}{\mathcal{h}}    \newcommand{\Hc}{\mathcal{H}}  
+\newcommand{\ic}{\mathcal{i}}    \newcommand{\Ic}{\mathcal{I}}  
+\newcommand{\jc}{\mathcal{j}}    \newcommand{\Jc}{\mathcal{J}}  
+\newcommand{\kc}{\mathcal{k}}    \newcommand{\Kc}{\mathcal{K}}  
+\newcommand{\lc}{\mathcal{l}}    \newcommand{\Lc}{\mathcal{L}}  
+\newcommand{\mcal}{\mathcal{m}}  \newcommand{\Mc}{\mathcal{M}}  
+\newcommand{\nc}{\mathcal{n}}    \newcommand{\Nc}{\mathcal{N}}  
+\newcommand{\oc}{\mathcal{o}}    \newcommand{\Oc}{\mathcal{O}}  
+\newcommand{\pc}{\mathcal{p}}    \newcommand{\Pc}{\mathcal{P}}  
+\newcommand{\qc}{\mathcal{q}}    \newcommand{\Qc}{\mathcal{Q}}  
+\newcommand{\rc}{\mathcal{r}}    \newcommand{\Rc}{\mathcal{R}}  
+\newcommand{\scal}{\mathcal{s}}  \newcommand{\Sc}{\mathcal{S}}  
+\newcommand{\tc}{\mathcal{t}}    \newcommand{\Tc}{\mathcal{T}}  
+\newcommand{\uc}{\mathcal{u}}    \newcommand{\Uc}{\mathcal{U}}  
+\newcommand{\vcal}{\mathcal{v}}  \newcommand{\Vc}{\mathcal{V}}  
+\newcommand{\wc}{\mathcal{w}}    \newcommand{\Wc}{\mathcal{W}}  
+\newcommand{\xc}{\mathcal{x}}    \newcommand{\Xc}{\mathcal{X}}  
+\newcommand{\yc}{\mathcal{y}}    \newcommand{\Yc}{\mathcal{Y}}  
+\newcommand{\zc}{\mathcal{z}}    \newcommand{\Zc}{\mathcal{Z}}  
+
+\newcommand{\cut}{}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\deriv}[2]{\frac{\partial {#1}}{\partial {#2}} }
+
+\title{COMPSCI 590N: Assignment 3}
+\date{Due: September 29, 2016 at 11:55pm}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\maketitle
+Included with this assignment are two CSV files. You should write python code using NumPy to answer the following questions about these two files. \textbf{You may not use any for or while loops in your code.} Please submit to Moodle a zip file containing your code and a PDF with your answers to these questions.
+
+\section{Problem 1: Data Filtering}
+
+In computing, \verb|NaN| is a special value that represents an undefined number such as $0/0$. Operations applied to \verb|NaN| result in \verb|NaN|, so any \verb|NaN| values appearing in a data matrix must be filtered before performing operations on the data. The file ``boston.csv" contains a matrix which contains a number of \verb|NaN| values. Please answer the following questions about this matrix. (Hint: see np.isnan)
+
+\begin{enumerate}
+	\item What percentage of entries in the matrix have the value \verb|NaN|?
+	\item How many rows contain at least one \verb|NaN| value?
+	\item How many \verb|NaN| values are there in each column?
+	\item What is the average value of each column, ignoring all rows containing at least one \verb|NaN| value?
+	\item What is the average value of each column, ignoring \verb|NaN| values, but including other features in the same row as a \verb|NaN| value?
+\end{enumerate}
+
+\section{Problem 2: Data Exploration}
+
+``iris.csv" contains the Fisher Iris dataset, a canonical pattern recognition dataset. Each row in the file corresponds to a data case and contains petal and sepal measurements as well as the iris species encoded as an integer between 0 and 2. The first row in the file contains the column names. Please answer the following questions about the Fisher Iris dataset.
+
+\begin{enumerate}
+	\item What is the average petal length for each iris species? \textbf{Copying the same line of code for each species counts as using a for loop!} (Hint: see np.bincount)
+	\item What is the sepal width for the five data cases with the largest sepal length? (Hint: see np.argsort)
+	\item We can (crudely) approximate the area of each petal by approximating the petal shape as an ellipse. Then, the petal area can be calculated as $\frac{\pi}{4}\times petal\_length\times petal\_width$. Report \textbf{sepal} measurements for the three data cases with the largest petal area according to this approximation.
+	\item Calculate the 4 by 4 Pearson correlation matrix for the four iris measurements. (Hint: see np.corrcoef)
+	\item Z-normalization is often used to ensure that the columns of a data matrix, $X$, have a similar scale. Let $\mu_f$ be the empirical mean of measurement $f$ across all data cases and let $\sigma_f$ be the empirical standard deviation of measurement $f$ across all data cases. Then the Z-normalized data matrix, $\tilde{X}$, is defined as, $\tilde{X}_{if} = (X_{if} - \mu_f)/\sigma_f$ for all $i$ and $f$. Calculate the Z-normalized data matrix and report the maximum value in each column of the Z-normalized matrix.
+\end{enumerate}
+
+\end{document}

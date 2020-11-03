@@ -1,0 +1,238 @@
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{relsize}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+% for proper bold math, including bold greek letters; typesets in math-mode
+% and not in \mathrm font
+\usepackage{bm}
+
+% %%%%%%%%%%%%%  VECTORS %%%%%%%%%%%%%%%%%%%
+\newcommand{\bmt}[1]{\bm{#1}^T} % transpose of a vector
+% INNER PRODUCT <x,y>
+\newcommand{\ip}[2]{\langle {#1},\, {#2} \rangle}
+
+% \va, \vb etc. type bold letters; notice exception at \vech -- coz. \vh is a
+% predefined thing in latex; 
+% additional commands include \vah -- read as vector a hat, 
+% or \ah -- a hat and so on
+\newcommand{\va}{\bm{a}}       \newcommand{\vah}{\hat{\bm{a}}}        \newcommand{\ah}{\hat{a}}
+\newcommand{\vb}{\bm{b}}       \newcommand{\vbh}{\hat{\bm{b}}}        \newcommand{\bh}{\hat{b}}
+\newcommand{\vc}{\bm{c}}       \newcommand{\vch}{\hat{\bm{c}}}        \newcommand{\ch}{\hat{c}}
+\newcommand{\vd}{\bm{d}}       \newcommand{\vdh}{\hat{\bm{d}}}        \newcommand{\dhat}{\hat{d}}
+\newcommand{\ve}{\bm{e}}       \newcommand{\veh}{\hat{\bm{e}}}        \newcommand{\eh}{\hat{e}}
+\newcommand{\vf}{\bm{f}}       \newcommand{\vfh}{\hat{\bm{f}}}        \newcommand{\fh}{\hat{f}}
+\newcommand{\vg}{\bm{g}}       \newcommand{\vgh}{\hat{\bm{g}}}        \newcommand{\gh}{\hat{g}}
+\newcommand{\vech}{\bm{h}}     \newcommand{\vhh}{\hat{\bm{h}}}        \newcommand{\hh}{\hat{h}}
+\newcommand{\vi}{\bm{i}}       \newcommand{\vih}{\hat{\bm{i}}}        \newcommand{\ih}{\hat{i}}
+\newcommand{\vj}{\bm{j}}       \newcommand{\vjh}{\hat{\bm{j}}}        \newcommand{\jh}{\hat{j}}
+\newcommand{\vk}{\bm{k}}       \newcommand{\vkh}{\hat{\bm{k}}}        \newcommand{\kh}{\hat{k}}
+\newcommand{\vl}{\bm{l}}       \newcommand{\vlh}{\hat{\bm{l}}}        \newcommand{\lh}{\hat{l}}
+\newcommand{\vm}{\bm{m}}       \newcommand{\vmh}{\hat{\bm{m}}}        \newcommand{\mh}{\hat{m}}
+\newcommand{\vn}{\bm{n}}       \newcommand{\vnh}{\hat{\bm{n}}}        \newcommand{\nh}{\hat{n}}
+\newcommand{\vo}{\bm{o}}       \newcommand{\voh}{\hat{\bm{o}}}        \newcommand{\oh}{\hat{o}}
+\newcommand{\vp}{\bm{p}}       \newcommand{\vph}{\hat{\bm{p}}}        \newcommand{\ph}{\hat{p}}
+\newcommand{\vq}{\bm{q}}       \newcommand{\vqh}{\hat{\bm{q}}}        \newcommand{\qh}{\hat{q}}
+\newcommand{\vr}{\bm{r}}       \newcommand{\vrh}{\hat{\bm{r}}}        \newcommand{\rh}{\hat{r}}
+\newcommand{\vs}{\bm{s}}       \newcommand{\vsh}{\hat{\bm{s}}}        \newcommand{\sh}{\hat{s}}
+\newcommand{\vt}{\bm{t}}       \newcommand{\vth}{\hat{\bm{t}}}        \newcommand{\that}{\hat{t}}
+\newcommand{\vu}{\bm{u}}       \newcommand{\vuh}{\hat{\bm{u}}}        \newcommand{\uh}{\hat{u}}
+\newcommand{\vv}{\bm{v}}       \newcommand{\vvh}{\hat{\bm{v}}}        \newcommand{\vh}{\hat{v}}
+\newcommand{\vw}{\bm{w}}       \newcommand{\vwh}{\hat{\bm{w}}}        \newcommand{\wh}{\hat{w}}
+\newcommand{\vx}{\bm{x}}       \newcommand{\vxh}{\hat{\bm{x}}}        \newcommand{\xh}{\hat{x}}
+\newcommand{\vy}{\bm{y}}       \newcommand{\vyh}{\hat{\bm{y}}}        \newcommand{\yh}{\hat{y}}
+\newcommand{\vz}{\bm{z}}       \newcommand{\vzh}{\hat{\bm{z}}}        \newcommand{\zh}{\hat{z}}
+\newcommand{\vY}{\bm{Y}}       \newcommand{\vzero}{\bm{0}}            \newcommand{\vone}{\bm{1}}
+\newcommand{\vA}{\bm{A}}        \newcommand{\vX}{\bm{X}}		\newcommand{\vU}{\bm{U}}
+\newcommand{\vV}{\bm{V}}	      \newcommand{\vW}{\bm{W}}
+
+% %%%%%%%%%%%%%%%%%%%% BOLD GREEK %%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Same convention as for ordinary roman letters above
+\newcommand{\valpha}  {\bm{\alpha}}      \newcommand{\valphah}  {\hat{\bm{\alpha}}}   
+\newcommand{\vbeta}   {\bm{\beta}}       \newcommand{\vbetah}   {\hat{\bm{\beta}}}    
+\newcommand{\vdelta}  {\bm{\delta}}      \newcommand{\vdeltah}  {\hat{\bm{\delta}}}   
+\newcommand{\vepsilon}{\bm{\epsilon}}    \newcommand{\vepsilonh}{\hat{\bm{\epsilon}}} 
+\newcommand{\vphi}    {\bm{\phi}}        \newcommand{\vphih}    {\hat{\bm{\phi}}}     
+\newcommand{\vgamma}  {\bm{\gamma}}      \newcommand{\vgammah}  {\hat{\bm{\gamma}}}   
+\newcommand{\veta}    {\bm{\eta}}        \newcommand{\vetah}    {\hat{\bm{\eta}}}     
+\newcommand{\vtheta}  {\bm{\theta}}      \newcommand{\vthetah}  {\hat{\bm{\theta}}}   
+\newcommand{\vkappa}  {\bm{\kappa}}      \newcommand{\vkappah}  {\hat{\bm{\kappa}}}   
+\newcommand{\vlambda} {\bm{\lambda}}     \newcommand{\vlambdah} {\hat{\bm{\lambda}}}  
+\newcommand{\vmu}     {\bm{\mu}}         \newcommand{\vmuh}     {\hat{\bm{\mu}}}      
+\newcommand{\vnu}     {\bm{\nu}}         \newcommand{\vnuh}     {\hat{\bm{\nu}}}      
+\newcommand{\vpi}     {\bm{\pi}}         \newcommand{\vpih}     {\hat{\bm{\pi}}}      
+\newcommand{\vchi}    {\bm{\chi}}        \newcommand{\vchih}    {\hat{\bm{\chi}}}     
+\newcommand{\vrho}    {\bm{\rho}}        \newcommand{\vrhoh}    {\hat{\bm{\rho}}}     
+\newcommand{\vsigma}  {\bm{\sigma}}      \newcommand{\vsigmah}  {\hat{\bm{\sigma}}}   
+\newcommand{\vtau}    {\bm{\tau}}        \newcommand{\vtauh}    {\hat{\bm{\tau}}}     
+\newcommand{\vupsilon}{\bm{\upsilon}}    \newcommand{\vupsilonh}{\hat{\bm{\upsilon}}} 
+\newcommand{\vomega}  {\bm{\omega}}      \newcommand{\vomegah}  {\hat{\bm{\omega}}}   
+\newcommand{\vxi}     {\bm{\xi}}         \newcommand{\vxih}     {\hat{\bm{\xi}}}      
+\newcommand{\vpsi}    {\bm{\psi}}        \newcommand{\vpsih}    {\hat{\bm{\psi}}}     
+\newcommand{\vzeta}   {\bm{\zeta}}       \newcommand{\vzetah}   {\hat{\bm{\zeta}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% CALLIGRAPHIC LETTERS %%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ac}{\mathcal{a}}    \newcommand{\Ac}{\mathcal{A}}  
+\newcommand{\bc}{\mathcal{b}}    \newcommand{\Bc}{\mathcal{B}}  
+\newcommand{\cc}{\mathcal{c}}    \newcommand{\Cc}{\mathcal{C}}  
+\newcommand{\dc}{\mathcal{d}}    \newcommand{\Dc}{\mathcal{D}}  
+\newcommand{\ec}{\mathcal{e}}    \newcommand{\Ec}{\mathcal{E}}  
+\newcommand{\fc}{\mathcal{f}}    \newcommand{\Fc}{\mathcal{F}}  
+\newcommand{\gc}{\mathcal{g}}    \newcommand{\Gc}{\mathcal{G}}  
+\newcommand{\hc}{\mathcal{h}}    \newcommand{\Hc}{\mathcal{H}}  
+\newcommand{\ic}{\mathcal{i}}    \newcommand{\Ic}{\mathcal{I}}  
+\newcommand{\jc}{\mathcal{j}}    \newcommand{\Jc}{\mathcal{J}}  
+\newcommand{\kc}{\mathcal{k}}    \newcommand{\Kc}{\mathcal{K}}  
+\newcommand{\lc}{\mathcal{l}}    \newcommand{\Lc}{\mathcal{L}}  
+\newcommand{\mcal}{\mathcal{m}}  \newcommand{\Mc}{\mathcal{M}}  
+\newcommand{\nc}{\mathcal{n}}    \newcommand{\Nc}{\mathcal{N}}  
+\newcommand{\oc}{\mathcal{o}}    \newcommand{\Oc}{\mathcal{O}}  
+\newcommand{\pc}{\mathcal{p}}    \newcommand{\Pc}{\mathcal{P}}  
+\newcommand{\qc}{\mathcal{q}}    \newcommand{\Qc}{\mathcal{Q}}  
+\newcommand{\rc}{\mathcal{r}}    \newcommand{\Rc}{\mathcal{R}}  
+\newcommand{\scal}{\mathcal{s}}  \newcommand{\Sc}{\mathcal{S}}  
+\newcommand{\tc}{\mathcal{t}}    \newcommand{\Tc}{\mathcal{T}}  
+\newcommand{\uc}{\mathcal{u}}    \newcommand{\Uc}{\mathcal{U}}  
+\newcommand{\vcal}{\mathcal{v}}  \newcommand{\Vc}{\mathcal{V}}  
+\newcommand{\wc}{\mathcal{w}}    \newcommand{\Wc}{\mathcal{W}}  
+\newcommand{\xc}{\mathcal{x}}    \newcommand{\Xc}{\mathcal{X}}  
+\newcommand{\yc}{\mathcal{y}}    \newcommand{\Yc}{\mathcal{Y}}  
+\newcommand{\zc}{\mathcal{z}}    \newcommand{\Zc}{\mathcal{Z}}  
+
+\newcommand{\cut}{}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\deriv}[2]{\frac{\partial {#1}}{\partial {#2}} }
+
+\title{COMPSCI 590N: Assignment 4}
+\date{Due: October 9, 2017 at 11:55pm}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\maketitle
+Included with the assignment is a script for testing your solution called \verb|assignment4_tests.py|. This script will test the output from your code against a number of test cases and will indicate if there are errors. Once you have written your code in \verb|assignment4.py|, you can run these tests by executing:
+
+\begin{verbatim}
+	python assignment4_tests.py
+\end{verbatim}
+
+\textbf{Be sure that you can run} \verb|assignment4_tests.py| \textbf{before submitting as this is how we will test your code for grading!} The provided test cases are meant to help you debug your code, but you should not assume that they are exhaustive. If a problem asks you define a function or class, \textbf{you should use exactly the name specified} in the problem for this function or class. Your modified version of \verb|assignment4.py| should be submitted to Moodle by the due date specified above. 
+
+Please submit to Moodle a zip file containing your code file as well as a PDF containing all plots and question responses.
+
+\section{Problem 1: Gauss-Jordan Elimination}
+Please write a function called \verb|gauss_jordan| that implements matrix inversion using Gauss-Jordan elimination, described in pseudo-code in Algorithm \ref{alg:gj}. Your function should take as input a square NumPy array, $A$, and should return $A^{-1}$ if $A$ is invertible and \verb|None| if it is not. You may assume that the input will be a square, two dimensional NumPy array with a numeric \verb|dtype|.
+
+\begin{algorithm}[h!]
+	\caption{Gauss-Jordan Elimination}
+	\label{alg:gj}
+	\begin{algorithmic}
+		\FOR {each row k}
+		\STATE $i^* \leftarrow \argmax_{k \leq i \leq n} |A_{ik}|$
+		\IF {$A_{i^*k} = 0$}
+		\STATE Matrix is not invertible
+		\ENDIF
+		\STATE Swap rows $k$ and $i^*$ 
+		\FOR {each row $j$ below $k$ (i.e. $j = k+1,...,n$)}
+		\STATE $f = \frac{A_{jk}}{A_{kk}}$
+		\STATE $A_{j} = A_{j} - fA_{k}$
+		\ENDFOR
+		\ENDFOR
+		\FOR {each row $k = n,...,1$ (i.e. in reverse)}
+		\STATE $A_k = A_k/A_{kk}$
+		\FOR {each row $j$ above $k$ (i.e. $j = k-1,...,1$)}
+		\STATE $f = \frac{A_{jk}}{A_{kk}}$
+		\STATE $A_{j} = A_{j} - fA_{k}$
+		\ENDFOR
+		\ENDFOR
+	\end{algorithmic}
+\end{algorithm}
+
+\section{Problem 2: Ordinary Least Squares Linear Regression}
+Linear regression is a common model for identifying linear relationships between a dependent variable, $y$, and a set of dependent variables, $\mathbf{x}$. Linear regression assumes the following model,
+
+\begin{align*}
+	y = \beta^T \mathbf{x} + \epsilon
+\end{align*}
+
+where $\beta$ is a vector coefficients that we would like to estimate and $\epsilon$ is Normally distributed noise. Given a set of $n$ data cases of $m$ covariates arranged as a matrix $\mathbf{X} \in \mathbb{R}^{n\times m}$ and a corresponding set of dependent variable observations arranged as a vector $\mathbf{y} \in \mathbb{R}^n$, we can estimate $\beta$ by minimizing the sum of squared errors,
+
+\begin{align*}
+	\hat{\beta} &= \argmin_\beta \sum_{i=1}^n (\beta^T \mathbf{X}_i - \mathbf{y}_i)^2\\
+	&= \argmin_\beta (\mathbf{X}\beta - \mathbf{y})^T(\mathbf{X}\beta - \mathbf{y})\\
+	&= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}
+\end{align*}
+
+In this problem, you will implement and compare two versions of this estimation method. Both methods should take two arguments, a two dimensional array $\mathbf{X}$ containing the independent variable observations and a one dimensional array $\mathbf{y}$ containing the dependent variable observations. Both methods should return a one dimensional vector containing $\hat{\beta}$. The two implementations are as follows,
+
+\begin{itemize}
+	\item \verb|linear_regression_inverse| should estimate $\hat{\beta}$ using only matrix multiplications and matrix inversion.
+	\item The Moore-Penrose pseudo-inverse of a matrix $\mathbf{X}$ is defined as $\mathbf{X}^+ = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T$. \verb|linear_regression_moore_penrose| should estimate $\hat{\beta}$ using the numpy function for finding the Moore-Penrose pseudo-inverse of a matrix, \verb|numpy.linalg.pinv|. 
+\end{itemize}
+
+You should use the numpy implementations of matrix multiplication, inversion, and pseudo-inversion. Once you have implemented both versions of linear regression, you should compare the runtimes of the two implementations. To do this, you should generate random data of varying sizes and look at how the runtime changes as you vary the input size. Code is provided for generating data and timing your functions. You should generate the following plots and answer the corresponding questions:
+
+\begin{enumerate}
+	\item With the number of data cases, $n$, fixed at $1000$, vary the number of covariates, $m$, between $25$ and $250$. Generate a plot where the x-axis is $m$ and the y-axis is the algorithms' runtimes in seconds. Plot the results for both methods on the same axis.
+	\item With the number of covariates, $m$, fixed at $25$, vary the number of data cases, $n$, between $1,000$ and $10,000$. Generate a plot where the x-axis is $n$ and the y-axis is the algorithms' runtimes in seconds. Plot the results for both methods on the same axis.
+	\item Which of the two methods is faster?
+	\item Which of the two data dimensions, $m$ or $n$, has a greater impact on the run time? Why is this the case? (Hint: Look at the dimensionality of the intermediate calculations in $(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}$)
+\end{enumerate}
+
+This problem requires you to generate some simple plots. There are many python plotting modules, however, I highly recommend using \verb|matplotlib| which has become the de facto standard for data analysis tasks. The documentation for the standard plotting function \verb|matplotlib.pyplot.plot| can be found at \url{http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot} and some examples can be found at \url{http://matplotlib.org/users/pyplot_tutorial.html}.
+
+\end{document}

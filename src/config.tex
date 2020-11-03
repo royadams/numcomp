@@ -1,0 +1,120 @@
+%%%%%%%%%%%%%%%%
+% Change the macros below to configure the title slides
+% for your course.
+\newcommand{\coursename}{COMPSCI 590N}
+\newcommand{\instructor}{Roy J. Adams}
+\newcommand{\university}{University of Massachusetts Amherst}
+\newcommand{\department}{College of Information and Computer Sciences}
+%%%%%%%%%%%%%%%%
+
+\newcommand\HUGE{\@setfontsize\Huge{50}{60}}
+
+\newcommand{\settitlecard}[2]{
+  \title[\coursename  Lecture #1] 
+    {\coursename \\ Lecture #1: #2}
+     \author[\instructor]{\instructor}
+     \institute[\university]{
+     \department\\
+     \university
+   }
+\date{}
+}
+
+\newcommand{\maketitlepage}{
+  \begin{frame}
+  \titlepage
+  %\center{
+    %If you use the slides unmodified, retain the attribution below
+  %  \tiny{Slides by Roy J. Adams (rjadams@cs.umass.edu). 
+    %If you modify the slides, please retain the alternate attribution below
+    %\tiny{Based on slides by Roy J. Adams (rjadams@cs.umass.edu). \\    
+  %  }                                              
+  %}  
+  \end{frame}
+}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,subsectionstyle=hide]
+  \end{frame}
+}
+
+
+\newcommand{\cut}[1]{}
+
+\newcommand{\iconbox}[4]{
+  \only<#1-#2>{
+    \begin{columns}[T]
+      \column{0.5in}
+           \includegraphics[width=0.5in]{#3}
+       \column{3.7in}
+            #4
+    \end{columns}
+    \medskip
+    \medskip
+    \medskip
+  }
+}
+
+\mode<presentation>{
+  \usepackage{../beamertheme589theme}
+  \setbeamercovered{invisible}
+}
+
+\mode<handout>{
+  \usepackage{../beamertheme589theme}
+  \setbeamercovered{transparent}
+}
+
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[noend]{algorithmic}
+\usepackage{algorithm}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{xmpmulti}
+
+\renewcommand\mathfamilydefault{\rmdefault}
+
+\newcommand{\setA}{\mathcal{A}}
+\newcommand{\setB}{\mathcal{B}}
+\newcommand{\setS}{\mathcal{S}}
+\newcommand{\setV}{\mathcal{V}}
+\DeclareMathOperator*{\union}{\bigcup}
+\DeclareMathOperator*{\intersection}{\bigcap}
+\DeclareMathOperator*{\Val}{Val}
+\newcommand{\mbf}[1]{{\mathbf{#1}}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\sign}{sign}
+\newcommand{\deriv}[2]{\frac{\partial{#1}}{\partial{#2}}}
+
+\lstdefinestyle{custompython}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=single,
+  xleftmargin=\parindent,
+  language=Python,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+\lstset{style=custompython}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}

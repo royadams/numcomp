@@ -1,0 +1,376 @@
+\documentclass[serif,xcolor=pdftex,dvipsnames,table,hyperref={bookmarks=false,breaklinks}]{beamer}
+
+\input{../config.tex}
+
+\settitlecard{11}{Debugging and Exceptions}
+
+\begin{document}
+
+\maketitlepage
+
+% \section{Announcements}
+% \subsection{Foo}
+%
+% \begin{frame}[t]{Announcements}
+% \begin{itemize}
+% 	\item Quiz 5 due tonight.
+% 	\item Assignment 5 due Tuesday.
+% \end{itemize}
+% \end{frame}
+%
+% \section{Quiz 3}
+% \subsection{Foo}
+%
+% \begin{frame}[t,fragile]{Quiz 3}
+% 	\begin{lstlisting}
+% 		# O(n^2) algorithm
+% 		for i in range(n):
+% 		    for j in range(n):
+% 		        simple_operation()
+%
+% 		# O(n) algorithm
+% 		for i in range(n):
+% 		    expensive_operation()
+% 	\end{lstlisting}
+% \end{frame}
+
+\section{Debugging}
+\subsection{Foo}
+
+\begin{frame}[t]{Debugging}
+	\begin{itemize}[<+->]
+		\item \textbf{Debugging} is the process of finding the errors in your code.
+		\item This process can take as much or more time as writing the code itself.
+		\item Having skill at debugging can save you \textbf{lots} of time.
+		\item Most programming languages have tools built for debugging code, aptly called \textbf{debuggers}.
+		\item Python has a number of these:
+		\begin{itemize}[<+->]
+			\item \textbf{pdb} - the built-in debugger.
+			\item \textbf{DDD} - graphical front-end for many debuggers including pdb.
+			\item \textbf{Spyder} - Spyder has a built in debugger.
+			\item \textbf{PuDB} - another graphical debugger.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Debugging}
+	The methods you use for debugging will vary depending on what kind of code you are writing, but there are some guiding principles.
+	\pause
+	\begin{block}{The Principle of Confirmation}
+		``Fixing a buggy program is a process of confirming, one by one, that the many things you believe to be true about the code actually \emph{are} true. When you find that one of your assumptions is not true, you have found a clue to the location (if not the exact nature) of a bug.''
+		
+		- \emph{Fast Lane to Python}, Norm Matloff
+	\end{block}
+	
+	\pause
+	In other words we are looking for things we don't expect.
+\end{frame}
+
+\begin{frame}[t]{Debugging Strategy}
+	There are two main steps to debugging:
+	\pause
+	\begin{enumerate}[<+->]
+		\item \textbf{Locate} the bug.
+		\item \textbf{Understand} the bug.
+	\end{enumerate}
+	
+	\pause 
+	\begin{itemize}[<+->]
+		\item A very common mistake made by new programmers is to try and figure out what went wrong before figuring out where it went wrong. 
+		\item Localizing a bug makes understanding the bug \textbf{much} easier.
+	\end{itemize}
+\end{frame}
+
+% \begin{frame}[t]{Debugging by Print Statements}
+% 	% Confirmation Example
+% 	For example:
+% 	\begin{itemize}
+% \end{frame}
+
+\begin{frame}[t,fragile]{Types of Bugs: Syntax vs Semantics}
+	There are many types of bugs. One common distinction is a syntax vs a semantic error.
+	\begin{itemize}[<+->]
+		\item A \textbf{syntax error} is caused by typing code that the computer cannot understand.
+		\item For example:
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+		>>> 1 !== 2
+		  File "<stdin>", line 1
+		    1 !== 2
+		        ^
+		SyntaxError: invalid syntax
+	\end{lstlisting}
+	\pause
+	\begin{itemize}
+		\item These will almost always cause your program to crash and are usually easy to find.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Types of Bugs: Syntax vs Semantics}
+	\begin{itemize}
+		\item These will almost always cause your program to crash and are usually easy to find.
+		\item A \textbf{semantic error} occurs when the code is valid, but does not do what you expect it to.
+		\item These can be very difficult to find.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Types of Bugs: Deterministic vs Non-deterministic}
+	\begin{itemize}[<+->]
+		\item A \textbf{deterministic} bug is one that will appear every time the same input is used.
+		\item This is the most common.
+		\item Still hard to find because they may not appear for every input.
+		\item A \textbf{non-deterministic} bug is one that appears irregularly.
+		\item Common causes include:
+		\begin{itemize}[<+->]
+			\item Code that relies on randomness (e.g. samplers).
+			\item Parallel code with race conditions.
+			\item Code that relies of exterior state.
+		\end{itemize}
+		\item The most nefarious of these is the so-called \textbf{heisenbug} which disappears when you try to view it.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Debugging by Print Statements}
+	\begin{itemize}[<+->]
+		\item One very common method for accessing the intermediate state of a program is to print the values of variables or add print statements inside conditional blocks.
+		\item We all do it, but we really shouldn't...
+		\item As a general rule, you should not modify your code in order to debug it.
+		\item In some cases modifying the code can make it so you can't reproduce the bug.
+		\item Sometimes unavoidable.
+	\end{itemize}
+\end{frame}
+
+% \begin{frame}[t]{Debugging Tools}
+% 	\begin{itemize}[<+->]
+% 		\item
+% 	\end{itemize}
+% \end{frame}
+
+\begin{frame}[t,fragile]{pdb}
+	\begin{itemize}[<+->]
+		\item Instead you should use one of the many debugging tools.
+		\item The built-in Python debugger is called \verb|pdb|.
+	\end{itemize}
+	% Calling pdb
+	\pause
+	\begin{lstlisting}
+		$> python -m pdb script.py
+		> /Users/adams/Dropbox/590n/demos/script.py(1)<module>()
+		-> import numpy as np
+		(Pdb) 
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[t,fragile]{Breakpoints}
+	\begin{itemize}[<+->]
+		\item \textbf{Breakpoints} allow you to stop the code at a specified line and interactively examine the state.
+		\item In pdb, breakpoints are set with the command \verb|b| or \verb|break| followed by a line number.
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+		(Pdb) b 8
+		Breakpoint 1 at /Users/adams/Dropbox/590n/demos/script.py:8
+		(Pdb)
+	\end{lstlisting}
+	\pause
+	\begin{itemize}[<+->]
+		\item To run the script, use the \verb|c| or \verb|continue| command.
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+		(Pdb) c
+		> /Users/adams/Dropbox/590n/demos/script.py(8)<module>()
+		-> b = 3
+		(Pdb)
+	\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[t,fragile]{Viewing Variables}
+	\begin{itemize}[<+->]
+		\item Once you are inside the code, you can explore the state (that is, the current values of the variables).
+		\item Print variables using the \verb|p| or \verb|print| command.
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+		(Pdb) c
+		> /Users/adams/Dropbox/590n/demos/script.py(8)<module>()
+		-> b = 3
+		(Pdb) p a
+		2
+	\end{lstlisting}
+	
+\end{frame}
+
+\begin{frame}[t,fragile]{Conditional Breakpoints}
+	
+	\begin{itemize}[<+->]
+		\item It is often convenient to view the state only when a certain condition is met.
+		\item For example, if we want to stop inside a loop but only on the last iteration.
+		\item A \textbf{conditional breakpoint} will halt the code only when a logical condition returns True.
+		\item This condition may involve variables defined in the code.
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+		# Break at line <line_number> when <condition> is True
+		(Pdb) b <line_number>, <condition>
+	\end{lstlisting}
+	
+\end{frame}
+
+\begin{frame}[t,fragile]{Stepping Through Code}
+	% step next until
+	\begin{itemize}[<+->]
+		\item Once you have reached a breakpoint, it is often useful to step through the code one line at a time.
+		\item The \verb|n| or \verb|next| command will advance the code to the next line \textbf{in the current scope}. It will not enter functions calls.
+		\item The \verb|s| or \verb|step| command will advance the code to the next line and will enter function calls.
+		\item The \verb|until| command will run the code until the specified line.
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+		(Pdb) s
+		(Pdb) n
+		(Pdb) until <line_number>
+	\end{lstlisting}
+\end{frame}
+
+\section{Exception Handling}
+\subsection{Foo}
+
+\begin{frame}[t,fragile]{Exceptions}
+	\begin{itemize}[<+->]
+		\item When Python encounters a run time error, it raises an \textbf{exception}.
+		\item By default this will crash your code.
+		\item There are many cases where we might want to keep running:
+		\begin{itemize}[<+->]
+			\item Continuous code (e.g. a server application).
+			\item Restart algorithm with a new initialization.
+			\item Solicit the user for input.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]{Exceptions}
+	\begin{itemize}[<+->]
+		\item The Python \textbf{try-except} block allows you to gracefully recover from an error.
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+		try:
+		    <code_that_might_have_errors>
+		except:
+		    <error_handling_code>
+	\end{lstlisting}
+	\pause
+	\begin{itemize}[<+->]
+		\item Python will try to run the code in the try block and if it fails, it will run the code in the except block.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]{Exceptions}
+	\begin{itemize}[<+->]
+		\item Sometimes errors contain information and you may want to handle different exceptions in different ways.
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+		try:
+		    <code_that_might_have_errors>
+		except <exception_type1>:
+		    <type1_handler>
+		except <exception_type2>:
+		    <type2_handler>
+		except:
+		    <handle_everything_else>
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[t,fragile]{Exceptions}
+	\begin{itemize}[<+->]
+		\item Common built-in exception types include:
+		\begin{itemize}[<+->]
+			\item \verb|ValueError|
+			\item \verb|ArithmeticError|
+			\item \verb|IOError|
+			\item \verb|KeyError|
+			\item etc.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t,fragile]{Exceptions}
+	% Example
+	You can handle different errors in different ways:
+	\begin{lstlisting}
+		try:
+		    <code_that_might_have_errors>
+		except <exception_type1>:
+		    <type1_handler>
+		except <exception_type2>:
+		    <type2_handler>
+		except:
+		    <handle_everything_else>
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[t,fragile]{Raising Exceptions}
+	\begin{itemize}[<+->]
+		\item Python also allows you to \textbf{raise} your own exceptions.
+		\item Reasons you may want to do this include:
+		\begin{itemize}[<+->]
+			\item It provides information about the error (as opposed to failing silently).
+			\item Allows the person using your code to handle the exception gracefully.
+			\item You will probably forget all of the ways your code can fail...
+		\end{itemize}
+		\item Raise exceptions using the \verb|raise| command.
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+		# Raise a value error
+		raise ValueError("Cannot invert a singular matrix.")
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[t,fragile]{Cleaning Up}
+	\begin{itemize}[<+->]
+		\item Sometimes there is code you want to run regardless of whether there was an error or not.
+		\item This code can be written in a \textbf{finally} clause.
+		\item Code in a finally block with run whether or not the code in the try block succeeds.
+	\end{itemize}
+	\pause
+	\begin{lstlisting}
+		try:
+		    <code_that_might_have_errors>
+		except:
+		    <error_handling_code>
+		finally:
+		    <always_run_this>
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[t,fragile]{Exception Handling is Not Just For Exceptions}
+	% Example
+	Try-except blocks can be used for many things besides handling errors. For example:
+	\pause
+	\begin{lstlisting}
+		a = {}
+		try:
+		    a["key"].append(5)
+		except:
+		    a["key"] = [5]
+	\end{lstlisting}
+	\pause
+	\begin{itemize}
+		\item Here we are try to create a dictionary of lists.
+		\item We can use try-except to check if a list is in the dictionary and add it if it is not.
+	\end{itemize}
+\end{frame}
+
+% \section{Unit Testing}
+% \subsection{Foo}
+%
+% \begin{frame}[t,fragile]{Testing Code}
+%
+% \end{frame}
+
+\end{document}

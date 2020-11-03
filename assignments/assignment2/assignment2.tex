@@ -1,0 +1,200 @@
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{relsize}
+\usepackage{hyperref}
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+% for proper bold math, including bold greek letters; typesets in math-mode
+% and not in \mathrm font
+\usepackage{bm}
+
+% %%%%%%%%%%%%%  VECTORS %%%%%%%%%%%%%%%%%%%
+\newcommand{\bmt}[1]{\bm{#1}^T} % transpose of a vector
+% INNER PRODUCT <x,y>
+\newcommand{\ip}[2]{\langle {#1},\, {#2} \rangle}
+
+% \va, \vb etc. type bold letters; notice exception at \vech -- coz. \vh is a
+% predefined thing in latex; 
+% additional commands include \vah -- read as vector a hat, 
+% or \ah -- a hat and so on
+\newcommand{\va}{\bm{a}}       \newcommand{\vah}{\hat{\bm{a}}}        \newcommand{\ah}{\hat{a}}
+\newcommand{\vb}{\bm{b}}       \newcommand{\vbh}{\hat{\bm{b}}}        \newcommand{\bh}{\hat{b}}
+\newcommand{\vc}{\bm{c}}       \newcommand{\vch}{\hat{\bm{c}}}        \newcommand{\ch}{\hat{c}}
+\newcommand{\vd}{\bm{d}}       \newcommand{\vdh}{\hat{\bm{d}}}        \newcommand{\dhat}{\hat{d}}
+\newcommand{\ve}{\bm{e}}       \newcommand{\veh}{\hat{\bm{e}}}        \newcommand{\eh}{\hat{e}}
+\newcommand{\vf}{\bm{f}}       \newcommand{\vfh}{\hat{\bm{f}}}        \newcommand{\fh}{\hat{f}}
+\newcommand{\vg}{\bm{g}}       \newcommand{\vgh}{\hat{\bm{g}}}        \newcommand{\gh}{\hat{g}}
+\newcommand{\vech}{\bm{h}}     \newcommand{\vhh}{\hat{\bm{h}}}        \newcommand{\hh}{\hat{h}}
+\newcommand{\vi}{\bm{i}}       \newcommand{\vih}{\hat{\bm{i}}}        \newcommand{\ih}{\hat{i}}
+\newcommand{\vj}{\bm{j}}       \newcommand{\vjh}{\hat{\bm{j}}}        \newcommand{\jh}{\hat{j}}
+\newcommand{\vk}{\bm{k}}       \newcommand{\vkh}{\hat{\bm{k}}}        \newcommand{\kh}{\hat{k}}
+\newcommand{\vl}{\bm{l}}       \newcommand{\vlh}{\hat{\bm{l}}}        \newcommand{\lh}{\hat{l}}
+\newcommand{\vm}{\bm{m}}       \newcommand{\vmh}{\hat{\bm{m}}}        \newcommand{\mh}{\hat{m}}
+\newcommand{\vn}{\bm{n}}       \newcommand{\vnh}{\hat{\bm{n}}}        \newcommand{\nh}{\hat{n}}
+\newcommand{\vo}{\bm{o}}       \newcommand{\voh}{\hat{\bm{o}}}        \newcommand{\oh}{\hat{o}}
+\newcommand{\vp}{\bm{p}}       \newcommand{\vph}{\hat{\bm{p}}}        \newcommand{\ph}{\hat{p}}
+\newcommand{\vq}{\bm{q}}       \newcommand{\vqh}{\hat{\bm{q}}}        \newcommand{\qh}{\hat{q}}
+\newcommand{\vr}{\bm{r}}       \newcommand{\vrh}{\hat{\bm{r}}}        \newcommand{\rh}{\hat{r}}
+\newcommand{\vs}{\bm{s}}       \newcommand{\vsh}{\hat{\bm{s}}}        \newcommand{\sh}{\hat{s}}
+\newcommand{\vt}{\bm{t}}       \newcommand{\vth}{\hat{\bm{t}}}        \newcommand{\that}{\hat{t}}
+\newcommand{\vu}{\bm{u}}       \newcommand{\vuh}{\hat{\bm{u}}}        \newcommand{\uh}{\hat{u}}
+\newcommand{\vv}{\bm{v}}       \newcommand{\vvh}{\hat{\bm{v}}}        \newcommand{\vh}{\hat{v}}
+\newcommand{\vw}{\bm{w}}       \newcommand{\vwh}{\hat{\bm{w}}}        \newcommand{\wh}{\hat{w}}
+\newcommand{\vx}{\bm{x}}       \newcommand{\vxh}{\hat{\bm{x}}}        \newcommand{\xh}{\hat{x}}
+\newcommand{\vy}{\bm{y}}       \newcommand{\vyh}{\hat{\bm{y}}}        \newcommand{\yh}{\hat{y}}
+\newcommand{\vz}{\bm{z}}       \newcommand{\vzh}{\hat{\bm{z}}}        \newcommand{\zh}{\hat{z}}
+\newcommand{\vY}{\bm{Y}}       \newcommand{\vzero}{\bm{0}}            \newcommand{\vone}{\bm{1}}
+\newcommand{\vA}{\bm{A}}        \newcommand{\vX}{\bm{X}}		\newcommand{\vU}{\bm{U}}
+\newcommand{\vV}{\bm{V}}	      \newcommand{\vW}{\bm{W}}
+
+% %%%%%%%%%%%%%%%%%%%% BOLD GREEK %%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Same convention as for ordinary roman letters above
+\newcommand{\valpha}  {\bm{\alpha}}      \newcommand{\valphah}  {\hat{\bm{\alpha}}}   
+\newcommand{\vbeta}   {\bm{\beta}}       \newcommand{\vbetah}   {\hat{\bm{\beta}}}    
+\newcommand{\vdelta}  {\bm{\delta}}      \newcommand{\vdeltah}  {\hat{\bm{\delta}}}   
+\newcommand{\vepsilon}{\bm{\epsilon}}    \newcommand{\vepsilonh}{\hat{\bm{\epsilon}}} 
+\newcommand{\vphi}    {\bm{\phi}}        \newcommand{\vphih}    {\hat{\bm{\phi}}}     
+\newcommand{\vgamma}  {\bm{\gamma}}      \newcommand{\vgammah}  {\hat{\bm{\gamma}}}   
+\newcommand{\veta}    {\bm{\eta}}        \newcommand{\vetah}    {\hat{\bm{\eta}}}     
+\newcommand{\vtheta}  {\bm{\theta}}      \newcommand{\vthetah}  {\hat{\bm{\theta}}}   
+\newcommand{\vkappa}  {\bm{\kappa}}      \newcommand{\vkappah}  {\hat{\bm{\kappa}}}   
+\newcommand{\vlambda} {\bm{\lambda}}     \newcommand{\vlambdah} {\hat{\bm{\lambda}}}  
+\newcommand{\vmu}     {\bm{\mu}}         \newcommand{\vmuh}     {\hat{\bm{\mu}}}      
+\newcommand{\vnu}     {\bm{\nu}}         \newcommand{\vnuh}     {\hat{\bm{\nu}}}      
+\newcommand{\vpi}     {\bm{\pi}}         \newcommand{\vpih}     {\hat{\bm{\pi}}}      
+\newcommand{\vchi}    {\bm{\chi}}        \newcommand{\vchih}    {\hat{\bm{\chi}}}     
+\newcommand{\vrho}    {\bm{\rho}}        \newcommand{\vrhoh}    {\hat{\bm{\rho}}}     
+\newcommand{\vsigma}  {\bm{\sigma}}      \newcommand{\vsigmah}  {\hat{\bm{\sigma}}}   
+\newcommand{\vtau}    {\bm{\tau}}        \newcommand{\vtauh}    {\hat{\bm{\tau}}}     
+\newcommand{\vupsilon}{\bm{\upsilon}}    \newcommand{\vupsilonh}{\hat{\bm{\upsilon}}} 
+\newcommand{\vomega}  {\bm{\omega}}      \newcommand{\vomegah}  {\hat{\bm{\omega}}}   
+\newcommand{\vxi}     {\bm{\xi}}         \newcommand{\vxih}     {\hat{\bm{\xi}}}      
+\newcommand{\vpsi}    {\bm{\psi}}        \newcommand{\vpsih}    {\hat{\bm{\psi}}}     
+\newcommand{\vzeta}   {\bm{\zeta}}       \newcommand{\vzetah}   {\hat{\bm{\zeta}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% CALLIGRAPHIC LETTERS %%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ac}{\mathcal{a}}    \newcommand{\Ac}{\mathcal{A}}  
+\newcommand{\bc}{\mathcal{b}}    \newcommand{\Bc}{\mathcal{B}}  
+\newcommand{\cc}{\mathcal{c}}    \newcommand{\Cc}{\mathcal{C}}  
+\newcommand{\dc}{\mathcal{d}}    \newcommand{\Dc}{\mathcal{D}}  
+\newcommand{\ec}{\mathcal{e}}    \newcommand{\Ec}{\mathcal{E}}  
+\newcommand{\fc}{\mathcal{f}}    \newcommand{\Fc}{\mathcal{F}}  
+\newcommand{\gc}{\mathcal{g}}    \newcommand{\Gc}{\mathcal{G}}  
+\newcommand{\hc}{\mathcal{h}}    \newcommand{\Hc}{\mathcal{H}}  
+\newcommand{\ic}{\mathcal{i}}    \newcommand{\Ic}{\mathcal{I}}  
+\newcommand{\jc}{\mathcal{j}}    \newcommand{\Jc}{\mathcal{J}}  
+\newcommand{\kc}{\mathcal{k}}    \newcommand{\Kc}{\mathcal{K}}  
+\newcommand{\lc}{\mathcal{l}}    \newcommand{\Lc}{\mathcal{L}}  
+\newcommand{\mcal}{\mathcal{m}}  \newcommand{\Mc}{\mathcal{M}}  
+\newcommand{\nc}{\mathcal{n}}    \newcommand{\Nc}{\mathcal{N}}  
+\newcommand{\oc}{\mathcal{o}}    \newcommand{\Oc}{\mathcal{O}}  
+\newcommand{\pc}{\mathcal{p}}    \newcommand{\Pc}{\mathcal{P}}  
+\newcommand{\qc}{\mathcal{q}}    \newcommand{\Qc}{\mathcal{Q}}  
+\newcommand{\rc}{\mathcal{r}}    \newcommand{\Rc}{\mathcal{R}}  
+\newcommand{\scal}{\mathcal{s}}  \newcommand{\Sc}{\mathcal{S}}  
+\newcommand{\tc}{\mathcal{t}}    \newcommand{\Tc}{\mathcal{T}}  
+\newcommand{\uc}{\mathcal{u}}    \newcommand{\Uc}{\mathcal{U}}  
+\newcommand{\vcal}{\mathcal{v}}  \newcommand{\Vc}{\mathcal{V}}  
+\newcommand{\wc}{\mathcal{w}}    \newcommand{\Wc}{\mathcal{W}}  
+\newcommand{\xc}{\mathcal{x}}    \newcommand{\Xc}{\mathcal{X}}  
+\newcommand{\yc}{\mathcal{y}}    \newcommand{\Yc}{\mathcal{Y}}  
+\newcommand{\zc}{\mathcal{z}}    \newcommand{\Zc}{\mathcal{Z}}  
+
+\newcommand{\cut}{}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\deriv}[2]{\frac{\partial {#1}}{\partial {#2}} }
+
+\title{COMPSCI 590N: Assignment 2}
+\date{Due: September 22, 2017 at 11:55pm}
+
+\begin{document}
+
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\maketitle
+
+Included with the assignment is a script for testing your solution called \verb|assignment2_tests.py|. This script will test the output from your code against a number of test cases and will indicate if there are errors. Once you have written your code in \verb|assignment2.py|, you can run these tests by executing:
+
+\begin{verbatim}
+	python assignment2_tests.py
+\end{verbatim}
+
+\textbf{Be sure that you can run} \verb|assignment2_tests.py| \textbf{before submitting as this is how we will test your code for grading!} The provided test cases are meant to help you debug your code, but you should not assume that they are exhaustive. If a problem asks you define a function or class, \textbf{you should use exactly the name specified} in the problem for this function or class. Your modified version of \verb|assignment2.py| should be submitted to Moodle by the due date specified above. 
+
+\section*{Problem 1: Classes (50 points)}
+In this exercise you should write a python class called \verb|Course|. The class member functions are described below.
+
+\bigskip
+\textbf{Course:} The \verb|Course| class should have the following methods:
+\begin{itemize}
+\item \verb|__init__| takes and stores a single integer course number.
+\item \verb|get_course_number| takes no arguments and returns the integer course number.
+\item \verb|add_student| takes a single \verb|string| student name and adds it in a roster.
+\item \verb|drop_student| takes a single \verb|string| student name. If the student is currently in the roster, it removes that student name from the roster and returns nothing.
+\item \verb|get_roster| takes no arguments and returns a list containing the names of all students enrolled in the course in \textbf{alphabetical order}.
+\end{itemize}
+
+You may user whatever instance variables and write as many other member functions as you want, as long as the listed functions work as described.
+
+\section*{Problem 2: Finding Roots (50 points)}
+You should write a function called \verb|find_roots| that solves quadratic equations of the form:
+
+\begin{align}
+	ax^2 + bx + c = 0
+\end{align}
+
+Your function should take as arguments the three coefficients of the quadratic equation, $a$, $b$, and $c$ in that order and return a list containing all \textbf{real} solutions to the equation \textbf{in ascending order}. Complex solutions should be ignored. For example, the call \verb|find_roots(1, 7, 12)| should return the set \verb|[-4.0, -3.0]|. If the equation has only a single real solution or no real solutions, \verb|find_roots| should return a singleton list or an empty list respectively.
+
+You may use any method for solving quadratic equations, however, you should try to make your solution is as stable as possible. \verb|assignment2_tests.py| provides a number of test cases where root finding methods may have problems, but this list is intentionally not exhaustive and different methods will have different problem areas. Think carefully about the method you choose and where numerical errors such as underflow, overflow, and round-off may occur and code your solution to handle these scenarios. \textbf{Note: You may not use any root finding methods from python modules.} 
+
+\end{document}
